@@ -1,0 +1,7 @@
+*.git
+.gitignore
+.gitkeep
+LICENSE
+README.md
+*.pdf
+*.zip

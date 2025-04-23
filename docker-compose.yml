@@ -4,20 +4,26 @@ services:
     image: postgres:17.4-bookworm
     container_name: postgres
     restart: always
-    env_file: .env
-    expose:
-      - "5432"
+    environment:
+      POSTGRES_USER: jdomingu
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: piscineds
+    ports:
+      - "5433:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
-      - ./subject:/csvfiles
+      - ./csv:/csvfiles/
+      - ./copy:/copy/
     networks:
       - 42ds
   pgadmin:
     image: dpage/pgadmin4:9.2.0
     container_name: pgadmin
-    env_file: .env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.es
+      PGADMIN_DEFAULT_PASSWORD: root
     ports:
-      - "4242:80"
+      - "4040:80"
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     networks:
