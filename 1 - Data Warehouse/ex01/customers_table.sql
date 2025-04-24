@@ -14,7 +14,7 @@ BEGIN
     FOR tab IN 
         SELECT tablename
         FROM pg_tables
-        WHERE schemaname = 'public' AND tablename LIKE 'data_202_\_%' ESCAPE '\'
+        WHERE schemaname = 'public' AND tablename LIKE 'data\_202_\_%' ESCAPE '\'
     LOOP
         EXECUTE format('
             INSERT INTO customers
